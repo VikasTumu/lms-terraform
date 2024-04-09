@@ -8,7 +8,7 @@ resource "aws_vpc" "lms-vpc" {
 }
 
 # lms web subnet creation
-resource "aws_subent" "lms-web-sn" {
+resource "aws_subnet" "lms-web-sn" {
     vpc_id = aws_vpc.lms-vpc.id
     cidr_block = "10.0.1.0/24"
     map_public_ip_on_launch = "true"
@@ -18,7 +18,7 @@ resource "aws_subent" "lms-web-sn" {
 }
 
 # lms api subnet creation
-resource "aws_subent" "lms-api-sn" {
+resource "aws_subnet" "lms-api-sn" {
     vpc_id = aws_vpc.lms-vpc.id
     cidr_block = "10.0.2.0/24"
     map_public_ip_on_launch = "true"
@@ -28,7 +28,7 @@ resource "aws_subent" "lms-api-sn" {
 }
 
 # lms db subnet creation
-resource "aws_subent" "lms-db-sn" {
+resource "aws_subnet" "lms-db-sn" {
     vpc_id = aws_vpc.lms-vpc.id
     cidr_block = "10.0.3.0/24"
     map_public_ip_on_launch = "false"
