@@ -5,6 +5,7 @@ resource "aws_instance" "lmds-web-server" {
     subnet_id = aws_subnet.lms-web-sn.id
     key_name = "lms-key1"
     vpc_security_group_ids = [aws_security_group.lms-web-sg.id]
+    region = "eu-north-1"
     tags = {
         Name = "lms-web-server"
     }
@@ -17,6 +18,7 @@ resource "aws_instance" "lmds-api-server" {
     subnet_id = aws_subnet.lms-api-sn.id
     key_name = "lms-key1"
     vpc_security_group_ids = [aws_security_group.lms-api-sg.id]
+    region = "eu-north-1"
     tags = {
         Name = "lms-api-server"
     }
@@ -29,6 +31,7 @@ resource "aws_instance" "lms-db-server" {
     subnet_id = aws_subnet.lms-db-sn.id
     key_name = "lms-key1"
     vpc_security_group_ids = [aws_security_group.lms-db-sg.id]
+    region = "eu-north-1"
     tags = {
         Name = "lms-db-server"
     }
