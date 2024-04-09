@@ -48,7 +48,7 @@ resource "aws_internet_gateway" "lms-ig" {
 # lms public route table
 resource "aws_route_table" "lms-pub-rtb" {
     vpc_id = aws_vpc.lms-vpc.id
-    route = {
+    route {
         cidr_block = "0.0.0.0/0"
         gateway_id = aws_internet_gateway.lms-ig.id
     }
@@ -155,7 +155,7 @@ resource "aws_network_acl" "lms-db-nacl" {
 
 # Web Nacl association to Web subnet
 resource "aws_network_acl_association" "lms-web-nacl-asc" {
-    network_acl = aws_network_acl.lms-web-nacl.id
+    network_acl_id = aws_network_acl.lms-web-nacl.id
     subnet_id = aws_subnet.lms-web-sn.id
 }
 
@@ -185,7 +185,7 @@ resource "aws_security_group" "lms-web-sg" {
 resource "aws_vpc_security_group_ingress_rule" "lms-web-sg-ingress-ssh" {
     security_group_id = aws_security_group.lms-web-sg.id
     from_port = 22
-    cidr-ipv4 = "0.0.0.0/0"
+    cidr_ipv4 = "0.0.0.0/0"
     ip_protocol = "tcp"
     to_port = 22
 }
@@ -193,7 +193,7 @@ resource "aws_vpc_security_group_ingress_rule" "lms-web-sg-ingress-ssh" {
 resource "aws_vpc_security_group_ingress_rule" "lms-web-sg-ingress-http" {
     security_group_id = aws_security_group.lms-web-sg.id
     from_port = 80
-    cidr-ipv4 = "0.0.0.0/0"
+    cidr_ipv4 = "0.0.0.0/0"
     ip_protocol = "tcp"
     to_port = 80
 }
@@ -219,7 +219,7 @@ resource "aws_security_group" "lms-api-sg" {
 resource "aws_vpc_security_group_ingress_rule" "lms-api-sg-ingress-ssh" {
     security_group_id = aws_security_group.lms-api-sg.id
     from_port = 22
-    cidr-ipv4 = "0.0.0.0/0"
+    cidr_ipv4 = "0.0.0.0/0"
     ip_protocol = "tcp"
     to_port = 22
 }
@@ -227,7 +227,7 @@ resource "aws_vpc_security_group_ingress_rule" "lms-api-sg-ingress-ssh" {
 resource "aws_vpc_security_group_ingress_rule" "lms-api-sg-ingress-nodejs" {
     security_group_id = aws_security_group.lms-api-sg.id
     from_port = 80
-    cidr-ipv4 = "0.0.0.0/0"
+    cidr_ipv4 = "0.0.0.0/0"
     ip_protocol = "tcp"
     to_port = 80
 }
@@ -253,7 +253,7 @@ resource "aws_security_group" "lms-db-sg" {
 resource "aws_vpc_security_group_ingress_rule" "lms-db-sg-ingress-ssh" {
     security_group_id = aws_security_group.lms-db-sg.id
     from_port = 22
-    cidr-ipv4 = "0.0.0.0/0"
+    cidr_ipv4 = "0.0.0.0/0"
     ip_protocol = "tcp"
     to_port = 22
 }
@@ -261,7 +261,7 @@ resource "aws_vpc_security_group_ingress_rule" "lms-db-sg-ingress-ssh" {
 resource "aws_vpc_security_group_ingress_rule" "lms-db-sg-ingress-http" {
     security_group_id = aws_security_group.lms-db-sg.id
     from_port = 80
-    cidr-ipv4 = "0.0.0.0/0"
+    cidr_ipv4 = "0.0.0.0/0"
     ip_protocol = "tcp"
     to_port = 80
 }
