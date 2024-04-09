@@ -50,7 +50,7 @@ resource "aws_route_table" "lms-pub-rtb" {
     vpc_id = aws_vpc.lms-vpc.id
     route = {
         cidr_block = "0.0.0.0/0"
-        gateway_id = aws-internet_gateway.lms-ig.id
+        gateway_id = aws_internet_gateway.lms-ig.id
     }
     tags = {
         Name = "lms-pub-rtb"
@@ -67,17 +67,17 @@ resource "aws_route_table" "lms-pri-rtb" {
 
 # Subnet and route table association (web,api and db)
 resource "aws_route_table_association" "lms-web-rtb-asc" {
-    subnet_id = aws_subent.lms-web-sn.id
+    subnet_id = aws_subnet.lms-web-sn.id
     route_table_id = aws_route_table.lms-pub-rtb.id
 }
 
 resource "aws_route_table_association" "lms-api-rtb-asc" {
-    subnet_id = aws_subent.lms-api-sn.id
+    subnet_id = aws_subnet.lms-api-sn.id
     route_table_id = aws_route_table.lms-pub-rtb.id
 }
 
 resource "aws_route_table_association" "lms-db-rtb-asc" {
-    subnet_id = aws_subent.lms-db-sn.id
+    subnet_id = aws_subnet.lms-db-sn.id
     route_table_id = aws_route_table.lms-pri-rtb.id
 }
 
@@ -161,13 +161,13 @@ resource "aws_network_acl_association" "lms-web-nacl-asc" {
 
 # api Nacl association to api subnet
 resource "aws_network_acl_association" "lms-api-nacl-asc" {
-    network_acl = aws_network_acl.lms-api-nacl.id
+    network_acl_id = aws_network_acl.lms-api-nacl.id
     subnet_id = aws_subnet.lms-api-sn.id
 }
 
 # db Nacl association to db subnet
 resource "aws_network_acl_association" "lms-db-nacl-asc" {
-    network_acl = aws_network_acl.lms-db-nacl.id
+    network_acl_id = aws_network_acl.lms-db-nacl.id
     subnet_id = aws_subnet.lms-db-sn.id
 }
 
