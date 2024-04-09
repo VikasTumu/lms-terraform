@@ -96,7 +96,7 @@ resource "aws_network_acl" "lms-web-nacl" {
         protocol = "tcp"
         rule_no = 100
         action = "allow"
-        cidr_block = 0.0.0.0/0
+        cidr_block = "0.0.0.0/0"
         from_port = 0
         to_port = 65535
     }
@@ -120,7 +120,7 @@ resource "aws_network_acl" "lms-api-nacl" {
         protocol = "tcp"
         rule_no = 100
         action = "allow"
-        cidr_block = 0.0.0.0/0
+        cidr_block = "0.0.0.0/0"
         from_port = 0
         to_port = 65535
     }
@@ -144,7 +144,7 @@ resource "aws_network_acl" "lms-db-nacl" {
         protocol = "tcp"
         rule_no = 100
         action = "allow"
-        cidr_block = 0.0.0.0/0
+        cidr_block = "0.0.0.0/0"
         from_port = 0
         to_port = 65535
     }
