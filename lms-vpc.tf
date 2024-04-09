@@ -38,7 +38,7 @@ resource "aws_subnet" "lms-db-sn" {
 }
 
 # lms internet gateway
-resource "aws_internet-gateway" "lms-ig" {
+resource "aws_internet_gateway" "lms-ig" {
     vpc_id = aws_vpc.lms-vpc.id
     tags = {
         Name = "lms-ig"
